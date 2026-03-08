@@ -49,7 +49,7 @@ class FamilyStructure:
             if any(m["id"] == provided_id for m in self._members):
                 raise ValueError("id already exists")
             new_id = provided_id
-            # keep _next_id ahead (optional, but nice)
+        
             if provided_id >= self._next_id:
                 self._next_id = provided_id + 1
         else:
@@ -58,7 +58,7 @@ class FamilyStructure:
         new_member = {
             "id": new_id,
             "first_name": first_name.strip(),
-            "last_name": self.last_name,   # Always Jackson
+            "last_name": self.last_name, 
             "age": age,
             "lucky_numbers": lucky_numbers
         }
@@ -68,13 +68,28 @@ class FamilyStructure:
         pass
 
     def delete_member(self, id):
-        ## You have to implement this method
-        ## Loop the list and delete the member with the given id
+        # borramos un miembro por id
+        if not isinstance(id, int):
+            raise ValueError("id debe ser int")
+
+        for i, m in enumerate(self._members):
+            if m["id"] == id:
+                self._members.pop(i)
+                return True
+
+        return False
         pass
 
     def get_member(self, id):
-        ## You have to implement this method
-        ## Loop all the members and return the one with the given id
+        # buscamos un miembro por id y lo devolvemos
+        if not isinstance(id, int):
+            raise ValueError("id debe ser int")
+
+        for m in self._members:
+            if m["id"] == id:
+                return m
+
+        return None
         pass
 
     # This method is done, it returns a list with all the family members
