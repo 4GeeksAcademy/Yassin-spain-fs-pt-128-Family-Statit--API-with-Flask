@@ -15,7 +15,7 @@ pytest-testdox = "*"
 pytest-ordering = "*"
 
 [requires]
-python_version = "3.13"
+python_version = "3.14"
 
 [scripts]
 start="python src/app.py"
